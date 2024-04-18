@@ -1,0 +1,19 @@
+header{
+    background-color:#F35B56;
+    height:80px;
+}
+
+#map {
+    height: 70vh;
+}
+
+
+
+.results{
+    height:50vh;
+}
+
+footer{
+    background-color:black;
+    color:white;
+}
