@@ -24,14 +24,37 @@ const {Storage} = require('@google-cloud/storage');
 // Routes
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
+  console.log('Index');
 });
 
-app.post('/results',(req, res) => {
-  //Ensure that a city was entered
+app.post('/', async (req, res) => {
+  try {
+    console.log('Goinf thr');
+    const city = req.body.city; // Get the city from the request body
 
-  res.redirect('/');
+    // Make a request to your API to fetch restaurant data based on the city
+    const response = await fetch(`https://sp24-41200-teamblack-project.uc.r.appspot.com/api/v1/places/city/${city}`);
+
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error('Error fetching data from API');
+    }
+
+    // Parse the JSON response
+    const restaurants = await response.json();
+
+    // Send the restaurant data as a JSON response
+    res.json(restaurants);
+  } catch (error) {
+    // Handle errors
+    console.error('Error:', error.message);
+    res.status(500).send('Internal server error');
+  }
 });
+
 
 app.listen(port, () => {
   console.log(`Restaurant App listening on port ${port}`);
 });
+
+

@@ -20,13 +20,14 @@
         <div class="row h-100">
             <div class="col-lg-5 col-sm-12">
                 <h4>Find a Restaurant Nearby</h4>
-                <form class="form-inline mt-3" style="width: 60%;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search by City" aria-label="Search">
+                <form class="form-inline mt-3" action="/search" method="POST" style="width: 60%;">
+                    <input id="city" class="form-control mr-sm-2" name="city" type="search" placeholder="Search by City" aria-label="Search">
                     <button class="btn btn-outline-danger mb-3 mt-3" type="submit">Search</button>
                 </form>
 
-                <div class="results mt-3" style="background-color: #C8C7EE;">
+                <div id="results mt-3" style="background-color: #C8C7EE;">
                     <h4>Results</h4>
+                
                 </div>
             </div>
             <div class="col-lg-7 col-sm-12">
